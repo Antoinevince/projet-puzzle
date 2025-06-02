@@ -1,2 +1,7 @@
 avancement:
--études de diffénrentes manières pour résoudre un rubik's cube: heuristique/deep learning; méthode plus classique...
+1. Dans un premier temps, on va s'attaquer aux Rubik's cube classique.
+On va étudier la représentation du cube, puis on va s'intéresser à l'algorithme de 
+
+-2/06/2025 -> j'ai étudié la représentation du cube classique. J'ai sélectionné l'agorithme de kociemba qui est intéressant. 
+
+2. Dans un second temps, on va s'attaquer au cube dans les dimensions supérieures
