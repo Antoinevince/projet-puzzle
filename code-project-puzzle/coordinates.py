@@ -4,7 +4,7 @@ ce fichier sert à implémenter le système de coordonnées du rubik's cube, de 
 
 
 
-
+"""on va représenter les configurations du cube sous forme de tableaux qui contiennent les mouvements qui ont permis d'arriver à cette configuration"""
 
 #rubik's cube 3x3x3
 class ClassicRubiksCube():
@@ -100,3 +100,13 @@ class ClassicRubiksCube():
         
         return self.state
 
+
+#cependant, à cause de la lourdeur en mémoire de ce type de représentation, nous allons en utiliser d'autres
+
+def upgraded_representation():
+
+    def __init__(self, corners, edges):
+        self.corners = corners
+        self.edges = edges
+
+    
