@@ -96,12 +96,5 @@ class ClassicRubiksCube():
         pass
 
 
-#cependant, à cause de la lourdeur en mémoire de ce type de représentation, nous allons en utiliser d'autres
-
-def upgraded_representation():
-
-    def __init__(self, corners, edges):
-        self.corners = corners
-        self.edges = edges
 
     
