@@ -11,7 +11,7 @@ import copy
 class ClassicRubiksCube():
 
 
-#on implémente les coordonnées en notant les coins et leur orientation sous formes de listes
+#les coordonnées seront implémentées de la façon [coins, arretes] 
 
 #chaque coin sera représenté par une liste contenant la position du coin et son orientation
 
@@ -25,8 +25,55 @@ class ClassicRubiksCube():
     def rotateF(self):
         self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
 
-        #permutations des positions des 
+#mise à jours des positions des coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0] <= 3:
+                if not self.new_coins[k][0] == 3:
+                    self.new_coins[k][0]+= 1
+                else:
+                    self.new_coins[k][0]=0
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)
+        print(self.new_coins)
+
+#mise à jour des orientations de chaque coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0] <= 3:
+                self.new_coins[k][1] = (self.new_coins[k][1] +1)%3
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)   
+
+
+
+
+
+        #permutations des positions des arrêtes
         self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] <= 3:
+                if not self.new_arretes[k][0] == 3:
+                    self.new_arretes[k][0]+= 1
+                else:
+                    self.new_arretes[k][0]=0
+            else:
+                pass
+        
+        #mise à jour des orientations de chaque arrête
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] <= 3:
+                self.new_arretes[k][1] = (self.new_arretes[k][1] +1)%3
+            else:
+                pass
+        
+        self.arretes = copy.deepcopy(self.new_arretes)
+        #print([self.new_coins, self.arretes])
+        #print(self.arretes)
+
 
 
 
