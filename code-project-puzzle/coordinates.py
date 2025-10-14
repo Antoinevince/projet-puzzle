@@ -28,15 +28,15 @@ class ClassicRubiksCube():
 #mise à jours des positions des coins
         for k in range(len(self.new_coins)):
             if self.coins[k][0] <= 3:
-                if not self.new_coins[k][0] == 3:
-                    self.new_coins[k][0]+= 1
+                if not self.new_coins[k][0] == 0:
+                    self.new_coins[k][0]-= 1
                 else:
-                    self.new_coins[k][0]=0
+                    self.new_coins[k][0]=3
             else:
                 pass
         
         self.coins = copy.deepcopy(self.new_coins)
-        print(self.new_coins)
+        
 
 #mise à jour des orientations de chaque coins
         for k in range(len(self.new_coins)):
@@ -49,17 +49,15 @@ class ClassicRubiksCube():
 
 
 
-
-
         #permutations des positions des arrêtes
         self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
 
         for k in range(len(self.new_arretes)):
             if self.arretes[k][0] <= 3:
-                if not self.new_arretes[k][0] == 3:
-                    self.new_arretes[k][0]+= 1
+                if not self.new_arretes[k][0] == 0:
+                    self.new_arretes[k][0]-= 1
                 else:
-                    self.new_arretes[k][0]=0
+                    self.new_arretes[k][0]=3
             else:
                 pass
         
@@ -71,18 +69,25 @@ class ClassicRubiksCube():
                 pass
         
         self.arretes = copy.deepcopy(self.new_arretes)
-        #print([self.new_coins, self.arretes])
-        #print(self.arretes)
+        print([self.new_coins, self.arretes])
+        
+
+
+
 
 
 
 
     def rotateR(self):
-
         pass
+
+
+
+
+
 
     def rotateU(self):
-        pass
+       pass
 
     def rotateL(self):
         pass

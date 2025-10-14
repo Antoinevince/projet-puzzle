@@ -15,4 +15,4 @@ state = [coins, arretes]
 
 dummy_config = coordinates.ClassicRubiksCube(state)
 
-coordinates.ClassicRubiksCube.rotateF(dummy_config)
+coordinates.ClassicRubiksCube.rotateU(dummy_config)
