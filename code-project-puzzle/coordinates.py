@@ -28,10 +28,10 @@ class ClassicRubiksCube():
 #mise à jours des positions des coins
         for k in range(len(self.new_coins)):
             if self.coins[k][0] <= 3:
-                if not self.new_coins[k][0] == 0:
-                    self.new_coins[k][0]-= 1
+                if not self.new_coins[k][0] == 3:
+                    self.new_coins[k][0]+= 1
                 else:
-                    self.new_coins[k][0]=3
+                    self.new_coins[k][3]=0
             else:
                 pass
         
@@ -79,26 +79,159 @@ class ClassicRubiksCube():
 
 
     def rotateR(self):
-        pass
+        #edgesl est dans l'ordre d'une rotation de la face R
+        edgesl = [2, 3, 4, 5]
+        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+
+#mise à jours des positions des coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0]in edgesl:
+                if edgesl.index(self.coins[k][0]) != (len(edgesl)-1):
+                    self.new_coins[k][0]=edgesl[edgesl.index(self.coins[k][0])+1]
+                else:
+                    self.new_coins[k][0]=edgesl[0]
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)
+        
+
+#mise à jour des orientations de chaque coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0] in edgesl:
+                self.new_coins[k][1] = (self.new_coins[k][1] +1)%3
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)   
 
 
 
+        #permutations des positions des arrêtes
+        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        
 
 
 
     def rotateU(self):
-       pass
+       #edgesl est dans l'ordre d'une rotation de la face R
+        edgesl = [0, 3, 4, 7]
+        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+
+#mise à jours des positions des coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0]in edgesl:
+                if edgesl.index(self.coins[k][0]) != (len(edgesl)-1):
+                    self.new_coins[k][0]=edgesl[edgesl.index(self.coins[k][0])+1]
+                else:
+                    self.new_coins[k][0]=edgesl[0]
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)
+        
+
+#mise à jour des orientations de chaque coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0] in edgesl:
+                self.new_coins[k][1] = (self.new_coins[k][1] +1)%3
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)   
+
 
     def rotateL(self):
-        pass
+        #edgesl est dans l'ordre d'une rotation de la face R
+        edgesl = [0, 1, 4, 5]
+        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+
+#mise à jours des positions des coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0]in edgesl:
+                if edgesl.index(self.coins[k][0]) != 0:
+                    self.new_coins[k][0]=edgesl[edgesl.index(self.coins[k][0])-1]
+                else:
+                    self.new_coins[k][0]=edgesl[-1]
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)
+        
+
+#mise à jour des orientations de chaque coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0] in edgesl:
+                self.new_coins[k][1] = (self.new_coins[k][1] +1)%3
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)   
+
         
         return self.state
 
     def rotateB(self):
-       pass
+       #edgesl est dans l'ordre d'une rotation de la face R
+        edgesl = [7, 6, 5, 4]
+        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+
+#mise à jours des positions des coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0]in edgesl:
+                if edgesl.index(self.coins[k][0]) != 0:
+                    self.new_coins[k][0]=edgesl[edgesl.index(self.coins[k][0])-1]
+                else:
+                    self.new_coins[k][0]=edgesl[-1]
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)
+        
+
+#mise à jour des orientations de chaque coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0] in edgesl:
+                self.new_coins[k][1] = (self.new_coins[k][1] +1)%3
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)   
+
+        
+        return self.state
+
 
     def rotateD(self):
-        pass
+        #edgesl est dans l'ordre d'une rotation de la face R
+        edgesl = [0, 7, 4, 3]
+        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+
+#mise à jours des positions des coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0]in edgesl:
+                if edgesl.index(self.coins[k][0]) != 0:
+                    self.new_coins[k][0]=edgesl[edgesl.index(self.coins[k][0])-1]
+                else:
+                    self.new_coins[k][0]=edgesl[-1]
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)
+        
+
+#mise à jour des orientations de chaque coins
+        for k in range(len(self.new_coins)):
+            if self.coins[k][0] in edgesl:
+                self.new_coins[k][1] = (self.new_coins[k][1] +1)%3
+            else:
+                pass
+        
+        self.coins = copy.deepcopy(self.new_coins)   
+
+        
+        return self.state
+
 
 
 
