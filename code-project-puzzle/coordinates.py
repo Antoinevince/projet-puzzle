@@ -51,10 +51,11 @@ class ClassicRubiksCube():
 
         #permutations des positions des arrêtes
         self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        arretesl = [0, 1, 2, 3]
 
         for k in range(len(self.new_arretes)):
-            if self.arretes[k][0] <= 3:
-                if not self.new_arretes[k][0] == 0:
+            if self.arretes[k][0] in arretesl:
+                if not self.new_coins[k][0]!= arretesl[arretesl.index(self.arretes[k][0])+1]:
                     self.new_arretes[k][0]-= 1
                 else:
                     self.new_arretes[k][0]=3
@@ -63,13 +64,15 @@ class ClassicRubiksCube():
         
         #mise à jour des orientations de chaque arrête
         for k in range(len(self.new_arretes)):
-            if self.arretes[k][0] <= 3:
+            if self.arretes[k][0] in arretesl:
                 self.new_arretes[k][1] = (self.new_arretes[k][1] +1)%3
             else:
                 pass
         
         self.arretes = copy.deepcopy(self.new_arretes)
         print([self.new_coins, self.arretes])
+
+        return self.state
         
 
 
@@ -109,6 +112,28 @@ class ClassicRubiksCube():
 
         #permutations des positions des arrêtes
         self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        arretesl = [2, 4, 6, 9]
+
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                if not self.new_coins[k][0]!= arretesl[arretesl.index(self.arretes[k][0])+1]:
+                    self.new_arretes[k][0]-= 1
+                else:
+                    self.new_arretes[k][0]=3
+            else:
+                pass
+        
+        #mise à jour des orientations de chaque arrête
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                self.new_arretes[k][1] = (self.new_arretes[k][1] +1)%3
+            else:
+                pass
+        
+        self.arretes = copy.deepcopy(self.new_arretes)
+        print([self.new_coins, self.arretes])
+
+        return self.state
         
 
 
@@ -138,7 +163,38 @@ class ClassicRubiksCube():
             else:
                 pass
         
-        self.coins = copy.deepcopy(self.new_coins)   
+        self.coins = copy.deepcopy(self.new_coins)
+
+
+
+        #permutations des positions des arrêtes
+        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        arretesl = [11, 9, 8, 10]
+
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                if not self.new_coins[k][0]!= arretesl[arretesl.index(self.arretes[k][0])+1]:
+                    self.new_arretes[k][0]-= 1
+                else:
+                    self.new_arretes[k][0]=3
+            else:
+                pass
+        
+        #mise à jour des orientations de chaque arrête
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                self.new_arretes[k][1] = (self.new_arretes[k][1] +1)%3
+            else:
+                pass
+        
+        self.arretes = copy.deepcopy(self.new_arretes)
+        print([self.new_coins, self.arretes])
+
+        return self.state
+
+
+
+
 
 
     def rotateL(self):
@@ -166,10 +222,38 @@ class ClassicRubiksCube():
             else:
                 pass
         
-        self.coins = copy.deepcopy(self.new_coins)   
+        self.coins = copy.deepcopy(self.new_coins) 
+    
 
+    #permutations des positions des arrêtes
+        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        arretesl = [10, 11, 7, 0]
+
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                if not self.new_coins[k][0]!= arretesl[arretesl.index(self.arretes[k][0])+1]:
+                    self.new_arretes[k][0]-= 1
+                else:
+                    self.new_arretes[k][0]=3
+            else:
+                pass
         
+        #mise à jour des orientations de chaque arrête
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                self.new_arretes[k][1] = (self.new_arretes[k][1] +1)%3
+            else:
+                pass
+        
+        self.arretes = copy.deepcopy(self.new_arretes)
+        print([self.new_coins, self.arretes])
+
         return self.state
+
+
+
+
+
 
     def rotateB(self):
        #edgesl est dans l'ordre d'une rotation de la face R
@@ -189,6 +273,8 @@ class ClassicRubiksCube():
         self.coins = copy.deepcopy(self.new_coins)
         
 
+        
+
 #mise à jour des orientations de chaque coins
         for k in range(len(self.new_coins)):
             if self.coins[k][0] in edgesl:
@@ -199,7 +285,34 @@ class ClassicRubiksCube():
         self.coins = copy.deepcopy(self.new_coins)   
 
         
+        #permutations des positions des arrêtes
+        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        arretesl = [8, 6, 5, 11]
+
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                if not self.new_coins[k][0]!= arretesl[arretesl.index(self.arretes[k][0])+1]:
+                    self.new_arretes[k][0]-= 1
+                else:
+                    self.new_arretes[k][0]=3
+            else:
+                pass
+        
+        #mise à jour des orientations de chaque arrête
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                self.new_arretes[k][1] = (self.new_arretes[k][1] +1)%3
+            else:
+                pass
+        
+        self.arretes = copy.deepcopy(self.new_arretes)
+        print([self.new_coins, self.arretes])
+
         return self.state
+
+
+
+
 
 
     def rotateD(self):
@@ -228,7 +341,29 @@ class ClassicRubiksCube():
                 pass
         
         self.coins = copy.deepcopy(self.new_coins)   
+    
+    #permutations des positions des arrêtes
+        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        arretesl = [3, 4, 5, 7]
 
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                if not self.new_coins[k][0]!= arretesl[arretesl.index(self.arretes[k][0])+1]:
+                    self.new_arretes[k][0]-= 1
+                else:
+                    self.new_arretes[k][0]=3
+            else:
+                pass
+        
+        #mise à jour des orientations de chaque arrête
+        for k in range(len(self.new_arretes)):
+            if self.arretes[k][0] in arretesl:
+                self.new_arretes[k][1] = (self.new_arretes[k][1] +1)%3
+            else:
+                pass
+        
+        self.arretes = copy.deepcopy(self.new_arretes)
+        print([self.new_coins, self.arretes])
         
         return self.state
 

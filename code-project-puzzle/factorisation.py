@@ -1,0 +1,1 @@
+#ce ficnier sert à déterminer les classes d'équivalence 
