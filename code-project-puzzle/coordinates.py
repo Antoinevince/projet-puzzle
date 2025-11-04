@@ -133,6 +133,7 @@ class ClassicRubiksCube():
         self.arretes = copy.deepcopy(self.new_arretes)
         print([self.new_coins, self.arretes])
 
+        self.state = [self.new_coins, self.arretes]
         return self.state
         
 
@@ -188,8 +189,8 @@ class ClassicRubiksCube():
                 pass
         
         self.arretes = copy.deepcopy(self.new_arretes)
-        print([self.new_coins, self.arretes])
-
+        
+        self.state = [self.new_coins, self.arretes]
         return self.state
 
 
@@ -246,8 +247,8 @@ class ClassicRubiksCube():
                 pass
         
         self.arretes = copy.deepcopy(self.new_arretes)
-        print([self.new_coins, self.arretes])
 
+        self.state = [self.new_coins, self.arretes]
         return self.state
 
 
@@ -306,8 +307,9 @@ class ClassicRubiksCube():
                 pass
         
         self.arretes = copy.deepcopy(self.new_arretes)
-        print([self.new_coins, self.arretes])
+        
 
+        self.state = [self.new_coins, self.arretes]
         return self.state
 
 
@@ -363,8 +365,8 @@ class ClassicRubiksCube():
                 pass
         
         self.arretes = copy.deepcopy(self.new_arretes)
-        print([self.new_coins, self.arretes])
         
+        self.state = [self.new_coins, self.arretes]
         return self.state
 
 
