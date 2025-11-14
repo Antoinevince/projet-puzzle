@@ -7,23 +7,30 @@ import copy
 
 """on va représenter les configurations du cube sous forme de tableaux qui contiennent les mouvements qui ont permis d'arriver à cette configuration"""
 
-#rubik's cube 3x3x3
-class ClassicRubiksCube():
 
 
-#les coordonnées seront implémentées de la façon [coins, arretes] 
-
-#chaque coin sera représenté par une liste contenant la position du coin et son orientation
-
+class RubikscubeCoordinate():
 
     def __init__(self, state):
         self.coins = state[0]
         self.arretes = state[1]
+
+
+
+
+
+
+#rubik's cube moves
+class Rubikscubemoves():
+
+
+    def __init__(self):
+        pass
     
 #les fonctions suivantes servent à gérer les différents mouvements que l'on peut faire sur les cube, et les interactions (ie si on fait un mouvement a, puis on effectue le mouvement inverse, il faut donc actualiser l'état du cube)
     
-    def rotateF(self):
-        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+    def rotateF(self, state):
+        self.new_coins = copy.deepcopy(state[0]) #copie de la liste des coords des coins
 
 #mise à jours des positions des coins
         for k in range(len(self.new_coins)):
@@ -49,8 +56,12 @@ class ClassicRubiksCube():
 
 
 
+
+
+
+
         #permutations des positions des arrêtes
-        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        self.new_arretes = copy.deepcopy(state[1])  #copie de la liste des coords des coins
         arretesl = [0, 1, 2, 3]
 
         for k in range(len(self.new_arretes)):
@@ -70,9 +81,9 @@ class ClassicRubiksCube():
                 pass
         
         self.arretes = copy.deepcopy(self.new_arretes)
-        print([self.new_coins, self.arretes])
+        state2 = [self.new_coins, self.arretes]
 
-        return self.state
+        return state2
         
 
 
@@ -81,10 +92,10 @@ class ClassicRubiksCube():
 
 
 
-    def rotateR(self):
+    def rotateR(self,state):
         #edgesl est dans l'ordre d'une rotation de la face R
         edgesl = [2, 3, 4, 5]
-        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+        self.new_coins = copy.deepcopy(state[0]) #copie de la liste des coords des coins
 
 #mise à jours des positions des coins
         for k in range(len(self.new_coins)):
@@ -111,7 +122,7 @@ class ClassicRubiksCube():
 
 
         #permutations des positions des arrêtes
-        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        self.new_arretes = copy.deepcopy(state[1])  #copie de la liste des coords des coins
         arretesl = [2, 4, 6, 9]
 
         for k in range(len(self.new_arretes)):
@@ -139,10 +150,10 @@ class ClassicRubiksCube():
 
 
 
-    def rotateU(self):
+    def rotateU(self, state):
        #edgesl est dans l'ordre d'une rotation de la face R
         edgesl = [0, 3, 4, 7]
-        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+        self.new_coins = copy.deepcopy(state[0]) #copie de la liste des coords des coins
 
 #mise à jours des positions des coins
         for k in range(len(self.new_coins)):
@@ -169,7 +180,7 @@ class ClassicRubiksCube():
 
 
         #permutations des positions des arrêtes
-        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        self.new_arretes = copy.deepcopy(state[1])  #copie de la liste des coords des coins
         arretesl = [11, 9, 8, 10]
 
         for k in range(len(self.new_arretes)):
@@ -198,10 +209,10 @@ class ClassicRubiksCube():
 
 
 
-    def rotateL(self):
+    def rotateL(self, state):
         #edgesl est dans l'ordre d'une rotation de la face R
         edgesl = [0, 1, 4, 5]
-        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+        self.new_coins = copy.deepcopy(state[0]) #copie de la liste des coords des coins
 
 #mise à jours des positions des coins
         for k in range(len(self.new_coins)):
@@ -227,7 +238,7 @@ class ClassicRubiksCube():
     
 
     #permutations des positions des arrêtes
-        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        self.new_arretes = copy.deepcopy(state[1])  #copie de la liste des coords des coins
         arretesl = [10, 11, 7, 0]
 
         for k in range(len(self.new_arretes)):
@@ -248,18 +259,18 @@ class ClassicRubiksCube():
         
         self.arretes = copy.deepcopy(self.new_arretes)
 
-        self.state = [self.new_coins, self.arretes]
-        return self.state
+        state2 = [self.new_coins, self.arretes]
+        return state2
 
 
 
 
 
 
-    def rotateB(self):
+    def rotateB(self, state):
        #edgesl est dans l'ordre d'une rotation de la face R
         edgesl = [7, 6, 5, 4]
-        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+        self.new_coins = copy.deepcopy(state[0]) #copie de la liste des coords des coins
 
 #mise à jours des positions des coins
         for k in range(len(self.new_coins)):
@@ -287,7 +298,7 @@ class ClassicRubiksCube():
 
         
         #permutations des positions des arrêtes
-        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        self.new_arretes = copy.deepcopy(state[1])  #copie de la liste des coords des coins
         arretesl = [8, 6, 5, 11]
 
         for k in range(len(self.new_arretes)):
@@ -309,18 +320,18 @@ class ClassicRubiksCube():
         self.arretes = copy.deepcopy(self.new_arretes)
         
 
-        self.state = [self.new_coins, self.arretes]
-        return self.state
+        state2 = [self.new_coins, self.arretes]
+        return state2
 
 
 
 
 
 
-    def rotateD(self):
+    def rotateD(self, state):
         #edgesl est dans l'ordre d'une rotation de la face R
         edgesl = [0, 7, 4, 3]
-        self.new_coins = copy.deepcopy(self.coins) #copie de la liste des coords des coins
+        self.new_coins = copy.deepcopy(state[0]) #copie de la liste des coords des coins
 
 #mise à jours des positions des coins
         for k in range(len(self.new_coins)):
@@ -345,7 +356,7 @@ class ClassicRubiksCube():
         self.coins = copy.deepcopy(self.new_coins)   
     
     #permutations des positions des arrêtes
-        self.new_arretes = copy.deepcopy(self.arretes)  #copie de la liste des coords des coins
+        self.new_arretes = copy.deepcopy(state[1])  #copie de la liste des coords des coins
         arretesl = [3, 4, 5, 7]
 
         for k in range(len(self.new_arretes)):
@@ -366,10 +377,56 @@ class ClassicRubiksCube():
         
         self.arretes = copy.deepcopy(self.new_arretes)
         
-        self.state = [self.new_coins, self.arretes]
-        return self.state
+        state2 = [self.new_coins, self.arretes]
+        return state2
 
 
 
 
-    
+#il faut recoder ces 3 méthodes
+#
+#
+#
+
+    def move_M(self, state):
+        # Sauvegarde l'état actuel des arêtes
+        new_arretes = copy.deepcopy(state[0])
+
+        # Exemple : Permutation des arêtes de la couche du milieu pour M
+        # Supposons que les arêtes de la couche du milieu sont aux indices 4, 5, 6, 7
+        new_arretes[4], new_arretes[5], new_arretes[6], new_arretes[7] = (
+            self.arretes[5], self.arretes[6], self.arretes[7], self.arretes[4]
+        )
+
+        # Met à jour l'état des arêtes
+        arretes2 = new_arretes
+
+        return arretes2
+
+    def move_E(self, state):
+        # Sauvegarde l'état actuel des arêtes
+        new_arretes = copy.deepcopy(state[0])
+
+        # Exemple : Permutation des arêtes de la couche du milieu pour E
+        new_arretes[4], new_arretes[5], new_arretes[6], new_arretes[7] = (
+            self.arretes[6], self.arretes[4], self.arretes[7], self.arretes[5]
+        )
+
+        # Met à jour l'état des arêtes
+        arretes2 = new_arretes
+
+        return arretes2
+
+    def move_S(self, state):
+        # Sauvegarde l'état actuel des arêtes
+        new_arretes = copy.deepcopy(state[0])
+
+        # Exemple : Permutation des arêtes de la couche du milieu pour S
+        new_arretes[4], new_arretes[5], new_arretes[6], new_arretes[7] = (
+            self.arretes[7], self.arretes[5], self.arretes[4], self.arretes[6]
+        )
+
+        # Met à jour l'état des arêtes
+        arretes2 = new_arretes
+
+        return arretes2
