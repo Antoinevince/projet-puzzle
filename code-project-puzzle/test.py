@@ -1,4 +1,5 @@
 import coordinates
+import factorisation
 
 # Configuration du cube résolu
 coins =[
@@ -15,4 +16,5 @@ state = [coins, arretes]
 
 dummy_config = coordinates.ClassicRubiksCube(state)
 
-coordinates.ClassicRubiksCube.rotateU(dummy_config)
+dummy_class = factorisation.MiddleLayerEquivalenceClasses(state)
+print(dummy_class.find_equivalence_classes(state))
