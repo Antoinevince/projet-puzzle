@@ -383,10 +383,6 @@ class Rubikscubemoves():
 
 
 
-#il faut recoder ces 3 méthodes
-#
-#
-#
 
     def move_M(self, state):
         # Sauvegarde l'état actuel des arêtes
