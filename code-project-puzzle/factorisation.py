@@ -14,90 +14,80 @@ import coordinates
 
 
 
-def middle_layer_edges(configuration):
+def edge_only_class(configuration):
 
 
-    middle_edges_indices=[4, 5, 6, 7]
-    # Récupère les arêtes de la configuration
-    arretes = configuration[1]
-
-    # Extrait uniquement les arêtes de la couche du milieu
-    middle_edges = [arretes[i] for i in middle_edges_indices]
-
-    return middle_edges
+    return configuration[1]
 
 
 
 #fobction qui teste l'appartenance de deux config à la même classe d'équivalecne 
 def is_equivalent(config1, config2):
      
-     return (middle_layer_edges(config1) == middle_layer_edges(config2))
+     return (edge_only_class(config1) == edge_only_class(config2))
 
 
 
 #dfs qui va parcourir les configurations du cube pour les stocker en classes d'équivalence
-def dfs(config_init, profondeur_max):
+def bfs(config_init, profondeur_max):
 
     visited = [config_init]
     profondeur = 0
-
-    hidden_configs = (config_init,
-                      coordinates.Rubikscubemoves.rotateF(config_init), 
-                      coordinates.Rubikscubemoves.rotateB(config_init), 
-                      coordinates.Rubikscubemoves.rotateD(config_init), 
-                      coordinates.Rubikscubemoves.rotateL(config_init), 
-                      coordinates.Rubikscubemoves.rotateR(config_init), 
-                      coordinates.Rubikscubemoves.rotateU(config_init))
+    deja_vu = [config_init]
     
-    a_voir = [coordinates.Rubikscubemoves.move_E(config_init), 
-              coordinates.Rubikscubemoves.move_M(config_init), 
+
+    a_voir = [coordinates.Rubikscubemoves.rotateF(config_init), 
+              coordinates.Rubikscubemoves.rotateB(config_init), 
+              coordinates.Rubikscubemoves.rotateD(config_init), 
+              coordinates.Rubikscubemoves.rotateL(config_init), 
+              coordinates.Rubikscubemoves.rotateR(config_init), 
+              coordinates.Rubikscubemoves.rotateU(config_init),
+              coordinates.Rubikscubemoves.move_E(config_init),
+              coordinates.Rubikscubemoves.move_M(config_init),
               coordinates.Rubikscubemoves.move_S(config_init)]
     
-    classe_equivalence = []
+    
+    
+    classe_equivalence = [[config_init]]
     
 
     while a_voir != []:
 
 
         new_config = a_voir.pop()
-        hidden_new_configs = [new_config,
-                              coordinates.Rubikscubemoves.rotateF(new_config), 
+        
+        a_voir_new_configs = [coordinates.Rubikscubemoves.rotateF(new_config), 
                               coordinates.Rubikscubemoves.rotateB(new_config), 
                               coordinates.Rubikscubemoves.rotateD(new_config), 
                               coordinates.Rubikscubemoves.rotateL(new_config), 
                               coordinates.Rubikscubemoves.rotateR(new_config), 
-                              coordinates.Rubikscubemoves.rotateU(new_config)]
+                              coordinates.Rubikscubemoves.rotateU(new_config),
+                              coordinates.Rubikscubemoves.move_E(config_init),
+                              coordinates.Rubikscubemoves.move_M(config_init),
+                              coordinates.Rubikscubemoves.move_S(config_init)]
         
-        a_voir_new_configs = [coordinates.Rubikscubemoves.move_E(new_config), 
-                              coordinates.Rubikscubemoves.move_M(new_config), 
-                              coordinates.Rubikscubemoves.move_S(new_config)]
         
-        if not new_config in visited:
-            visited += hidden_new_configs
+
+        if not new_config in deja_vu:
+            deja_vu += [new_config]
+
+        for j in a_voir_new_configs:
             new = True
-            
-            if profondeur >= profondeur_max:
-                break
-
-            #on emplie les nouvelles configurations
-            a_voir += a_voir_new_configs
-
-            #on check si le lot de configurations équivalentes appartient à une classe d'équivalence déjà taitée
             for k in classe_equivalence:
-                if is_equivalent(k[0], new_config) == True:
-                    k.append(new_config)
-                new = False
-            if new== True:
-                classe_equivalence.append(hidden_new_configs)
-
-            profondeur+=1
-
-            #on appelle le dfs de nouveau
-            dfs(new_config)
+                if is_equivalent(k[0], j) == True:
+                    new = False
+                    k.append(j)
+            if new == True:
+                classe_equivalence.append([j])
+            
+        a_voir = a_voir_new_configs + a_voir
+            
 
 
-        else:
-            pass
+        #on appelle le dfs de nouveau
+        bfs(new_config)
+
+    return classe_equivalence 
 
 
 
