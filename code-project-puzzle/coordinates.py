@@ -30,16 +30,18 @@ class Rubikscubemoves():
 #les fonctions suivantes servent à gérer les différents mouvements que l'on peut faire sur les cube, et les interactions (ie si on fait un mouvement a, puis on effectue le mouvement inverse, il faut donc actualiser l'état du cube)
     
     def rotateF(state):
+        #edgesl est dans l'ordre d'une rotation de la face R
+        edgesl = [0, 1, 2, 3]
         coins = state[0]
         new_coins = copy.deepcopy(state[0]) #copie de la liste des coords des coins
 
 #mise à jours des positions des coins
         for k in range(len(new_coins)):
-            if coins[k][0] <= 3:
-                if not new_coins[k][0] == 3:
-                    new_coins[k][0]+= 1
+            if coins[k][0]in edgesl:
+                if edgesl.index(coins[k][0]) != (len(edgesl)-1):
+                    new_coins[k][0]=edgesl[edgesl.index(coins[k][0])+1]
                 else:
-                    new_coins[k][3]=0
+                    new_coins[k][0]=edgesl[0]
             else:
                 pass
         
@@ -48,10 +50,12 @@ class Rubikscubemoves():
 
 #mise à jour des orientations de chaque coins
         for k in range(len(new_coins)):
-            if coins[k][0] <= 3:
+            if coins[k][0] in edgesl:
                 new_coins[k][1] = (new_coins[k][1] +1)%3
             else:
                 pass
+        
+        coins = copy.deepcopy(new_coins)  
         
         coins = copy.deepcopy(new_coins)   
 
@@ -67,7 +71,7 @@ class Rubikscubemoves():
 
         for k in range(len(new_arretes)):
             if arretes[k][0] in arretesl:
-                if not new_coins[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
+                if not new_arretes[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
                     new_arretes[k][0]-= 1
                 else:
                     new_arretes[k][0]=3
@@ -130,7 +134,7 @@ class Rubikscubemoves():
 
         for k in range(len(new_arretes)):
             if arretes[k][0] in arretesl:
-                if not new_coins[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
+                if not new_arretes[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
                     new_arretes[k][0]-= 1
                 else:
                     new_arretes[k][0]=3
@@ -190,7 +194,7 @@ class Rubikscubemoves():
 
         for k in range(len(new_arretes)):
             if arretes[k][0] in arretesl:
-                if not new_coins[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
+                if not new_arretes[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
                     new_arretes[k][0]-= 1
                 else:
                     new_arretes[k][0]=3
@@ -250,7 +254,7 @@ class Rubikscubemoves():
 
         for k in range(len(new_arretes)):
             if arretes[k][0] in arretesl:
-                if not new_coins[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
+                if not new_arretes[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
                     new_arretes[k][0]-= 1
                 else:
                     new_arretes[k][0]=3
@@ -312,7 +316,7 @@ class Rubikscubemoves():
 
         for k in range(len(new_arretes)):
             if arretes[k][0] in arretesl:
-                if not new_coins[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
+                if not new_arretes[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
                     new_arretes[k][0]-= 1
                 else:
                     new_arretes[k][0]=3
@@ -372,7 +376,7 @@ class Rubikscubemoves():
 
         for k in range(len(new_arretes)):
             if arretes[k][0] in arretesl:
-                if not new_coins[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
+                if not new_arretes[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
                     new_arretes[k][0]-= 1
                 else:
                     new_arretes[k][0]=3
@@ -437,3 +441,6 @@ class Rubikscubemoves():
         arretes2 = new_arretes
 
         return arretes2
+    
+
+

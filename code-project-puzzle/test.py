@@ -1,5 +1,7 @@
 import coordinates
 import factorisation
+import sqlite3
+
 
 # Configuration du cube résolu
 state = [
@@ -8,7 +10,12 @@ state = [
         [0, 0],  # Coin 0
         [1, 0],  # Coin 1
         [2, 0],  # Coin 2
-        [3, 0]   # Coin 3
+        [3, 0],   # Coin 3
+        [4, 0],
+        [5, 0],
+        [6, 0],
+        [7, 0],
+        [8, 0]
     ],
     # Liste des arêtes
     [
@@ -23,4 +30,6 @@ state = [
     ]
 ]
 
-print(factorisation.dfs(state, 5))
+print(coordinates.Rubikscubemoves.rotateF(state))
+
+#database = sqlite3.connect('classesequivalence.db')

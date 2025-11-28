@@ -102,6 +102,7 @@ def bfs(config_init, profondeur_max):
 ########
 
 
+
 """
 
 #implémentation de la base de donnée
