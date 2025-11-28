@@ -12,7 +12,14 @@ import sqlite3
 import coordinates
 
 
+def add_representative(state, db):
+    with sqlite3.connect("classesequivalence.db") as conn:
+            cursor = conn.cursor()
+            # Crée la table 'equivalence_classes' si elle n'existe pas
+            cursor.execute('''
 
+            ''')
+            conn.commit()
 
 def edge_only_class(configuration):
 
@@ -103,55 +110,3 @@ def bfs(config_init, profondeur_max):
 
 
 
-"""
-
-#implémentation de la base de donnée
-class EquivalenceClassDatabase:
-    def __init__(self, db_name="equivalence_classes.db"):
-        # Nom de la base de données
-        self.db_name = db_name
-        # Initialise la base de données
-        self._init_db()
-
-    def _init_db(self):
-        # Crée une connexion à la base de données
-        with sqlite3.connect(self.db_name) as conn:
-            cursor = conn.cursor()
-            # Crée la table 'equivalence_classes' si elle n'existe pas
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS equivalence_classes (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    middle_edges TEXT NOT NULL UNIQUE
-                )
-            ''')
-            conn.commit()
-
-    def insert_equivalence_class(self, middle_edges):
-        # Insère une classe d'équivalence dans la base de données
-        with sqlite3.connect(self.db_name) as conn:
-            cursor = conn.cursor()
-            # Convertit les arêtes de la couche du milieu en chaîne de caractères
-            middle_edges_str = str(middle_edges)
-            try:
-                cursor.execute('''
-                    INSERT INTO equivalence_classes (middle_edges) VALUES (?)
-                ''', (middle_edges_str,))
-                conn.commit()
-            except sqlite3.IntegrityError:
-                # Si la classe est déjà présente, on ne fait rien
-                pass
-
-    def get_all_equivalence_classes(self):
-        # Récupère toutes les classes d'équivalence de la base de données
-        with sqlite3.connect(self.db_name) as conn:
-            cursor = conn.cursor()
-            cursor.execute('''
-                SELECT * FROM equivalence_classes
-            ''')
-            return cursor.fetchall()
-
-    def close(self):
-        # Ferme la connexion à la base de données
-        pass
-
-"""

@@ -71,7 +71,7 @@ class Rubikscubemoves():
 
         for k in range(len(new_arretes)):
             if arretes[k][0] in arretesl:
-                if not new_arretes[k][0]!= arretesl[arretesl.index(arretes[k][0])+1]:
+                if not new_arretes[k][0]!= arretesl[arretesl.index(arretes[k][0])] and new_arretes[k][0] != 0:
                     new_arretes[k][0]-= 1
                 else:
                     new_arretes[k][0]=3
