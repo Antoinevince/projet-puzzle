@@ -8,18 +8,37 @@ from itertools import permutations, product
 import copy
 from collections import deque
 import sqlite3
+import json
 
 import coordinates
 
 
-def add_representative(state, db):
+def insert_new_class(state, equiva_class):
     with sqlite3.connect("classesequivalence.db") as conn:
             cursor = conn.cursor()
-            # Crée la table 'equivalence_classes' si elle n'existe pas
+            state_jons = json.dump(state)
+            
             cursor.execute('''
-
-            ''')
+                INSERT INTO classe (id, content) VALUES (?, ?)
+            ''', (equiva_class, state))
             conn.commit()
+
+def add_representative(state, class_equi_id):
+    with sqlite3.connect("classesequivalence.db") as conn:
+            cursor = conn.cursor()
+            state_jons = json.dump(state)
+            #recuperer le contenu de la classe d'équivalence à laquelle state appartient
+            class_content = cursor.execute()
+
+            #ajouter state à la liste des états de la classe d'équivlaence correspondant
+            
+            cursor.execute('''
+                
+            ''', (class_equi_id, state))
+            conn.commit()
+
+
+
 
 def edge_only_class(configuration):
 
@@ -99,14 +118,6 @@ def bfs(config_init, profondeur_max):
 
 
 
-
-
-
-########
-
-#base de donnée pas encore implémentée
-
-########
 
 
 
