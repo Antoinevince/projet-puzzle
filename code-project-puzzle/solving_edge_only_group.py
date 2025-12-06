@@ -1,17 +1,7 @@
-import factorisation
 import coordinates
 
 
-
-
-def get_equivalent_class():
-    pass
-
-def store_optimal_solution():
-    pass
-
-
-def bfs_total():
+def bfs_edge_only_group():
     config_init = [
     # Liste des coins
     [
@@ -80,13 +70,6 @@ def bfs_total():
 
 
         #on appelle le dfs de nouveau
-        bfs_total(new_config)
+        bfs_edge_only_group(new_config)
 
     return 
-
-
-
-
-
-
-

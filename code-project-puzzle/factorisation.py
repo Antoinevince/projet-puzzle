@@ -13,37 +13,32 @@ import json
 import coordinates
 
 
-def insert_new_class(state, equiva_class):
+
+
+
+
+### je sais pas comment faire
+def insert_new_class(state, card):
     with sqlite3.connect("classesequivalence.db") as conn:
             cursor = conn.cursor()
-            state_jons = json.dump(state)
-            
             cursor.execute('''
-                INSERT INTO classe (id, content) VALUES (?, ?)
-            ''', (equiva_class, state))
+                INSERT INTO classe (id, coins) VALUES (?, ?)
+            ''', (card, state[0]))
             conn.commit()
 
-def add_representative(state, class_equi_id):
-    with sqlite3.connect("classesequivalence.db") as conn:
-            cursor = conn.cursor()
-            state_jons = json.dump(state)
-            #recuperer le contenu de la classe d'équivalence à laquelle state appartient
-            class_content = cursor.execute()
-
-            #ajouter state à la liste des états de la classe d'équivlaence correspondant
-            
-            cursor.execute('''
-                
-            ''', (class_equi_id, state))
-            conn.commit()
+####
 
 
 
 
+#retourne les coordonnées des coins
 def edge_only_class(configuration):
+    configuration_str = ""
 
+    for k in configuration[1]:
+         configuration_str+= f"{k[0]}{k[1]}"
 
-    return configuration[1]
+    return (configuration[1], configuration_str)
 
 
 
@@ -75,6 +70,8 @@ def bfs(config_init, profondeur_max):
     
     
     classe_equivalence = [[config_init]]
+
+    card = 2
     
 
     while a_voir != []:
@@ -97,14 +94,19 @@ def bfs(config_init, profondeur_max):
         if not new_config in deja_vu:
             deja_vu += [new_config]
 
+
+
         for j in a_voir_new_configs:
             new = True
+
+            #on regarde si j représente une nouvelle classe d'équivalence
             for k in classe_equivalence:
                 if is_equivalent(k[0], j) == True:
                     new = False
-                    k.append(j)
             if new == True:
-                classe_equivalence.append([j])
+                insert_new_class(j, card)
+
+        card+=1
             
         a_voir = a_voir_new_configs + a_voir
             
@@ -113,7 +115,8 @@ def bfs(config_init, profondeur_max):
         #on appelle le dfs de nouveau
         bfs(new_config)
 
-    return classe_equivalence 
+    #l'important est la base de données
+    return  
 
 
 

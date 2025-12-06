@@ -30,6 +30,8 @@ state = [
     ]
 ]
 
-print(coordinates.Rubikscubemoves.rotateF(state))
+#print(coordinates.Rubikscubemoves.rotateF(state))
+
+print(factorisation.bfs(state, 5))
 
 #database = sqlite3.connect('classesequivalence.db')
